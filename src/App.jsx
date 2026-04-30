@@ -9,6 +9,8 @@ function App() {
   const [quizResults, setQuizResults] = useState(null)
   const [partyFilter, setPartyFilter] = useState('All')
 
+  const visibleCandidates = candidates.filter(c => !c.hidden)
+
   const toggleCandidate = (candidateId) => {
     setSelectedCandidates(prev =>
       prev.includes(candidateId)
@@ -66,9 +68,12 @@ function App() {
         }
       })
       
-      return { ...candidate, score: matchScore, totalMatches }
+      // Calculate percentage match
+      const percentageMatch = totalMatches > 0 ? Math.round(((matchScore + totalMatches) / (totalMatches * 2)) * 100) : 0
+      
+      return { ...candidate, score: matchScore, totalMatches, percentageMatch }
     })
-    setQuizResults(scores.sort((a, b) => b.score - a.score))
+    setQuizResults(scores.sort((a, b) => b.percentageMatch - a.percentageMatch))
   }
 
   const getIssueOptions = (issueId) => {
@@ -104,8 +109,8 @@ function App() {
 
   if (view === 'home') {
     const filteredCandidates = partyFilter === 'All' 
-      ? candidates 
-      : candidates.filter(c => c.party === partyFilter)
+      ? visibleCandidates 
+      : visibleCandidates.filter(c => c.party === partyFilter)
 
     return (
       <div className="min-h-screen bg-gray-50 font-sans">
@@ -200,7 +205,7 @@ function App() {
             </div>
             <button
               onClick={() => setView('home')}
-              className="px-3 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors text-sm"
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"
             >
               ← Back
             </button>
@@ -209,7 +214,7 @@ function App() {
 
         <main className="max-w-7xl mx-auto px-4 py-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {candidates.map(candidate => (
+            {visibleCandidates.map(candidate => (
               <div key={candidate.id} className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-3">
                   <div className="w-14 h-14 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 flex items-center justify-center">
@@ -279,7 +284,7 @@ function App() {
             </div>
             <button
               onClick={() => setView('home')}
-              className="px-3 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors text-sm"
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"
             >
               ← Back
             </button>
@@ -309,7 +314,7 @@ function App() {
                     className="w-full px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
                   >
                     <option value="">Select a candidate...</option>
-                    {candidates
+                    {visibleCandidates
                       .filter(c => !selectedCandidates.includes(c.id) || selectedCandidates[slot] === c.id)
                       .map(candidate => (
                         <option key={candidate.id} value={candidate.id}>
@@ -524,7 +529,7 @@ function App() {
                   setQuizAnswers({})
                   setView('home')
                 }}
-                className="px-3 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors text-sm"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"
               >
                 ← Back
               </button>
@@ -559,8 +564,8 @@ function App() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-600">{candidate.score}</div>
-                        <div className="text-xs text-gray-500">Match Score</div>
+                        <div className="text-2xl font-bold text-blue-600">{candidate.percentageMatch}%</div>
+                        <div className="text-xs text-gray-500">Match</div>
                       </div>
                     </div>
                   </div>
@@ -588,7 +593,7 @@ function App() {
             </div>
             <button
               onClick={() => setView('home')}
-              className="px-3 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors text-sm"
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"
             >
               ← Back
             </button>
