@@ -12,28 +12,28 @@ export const candidates = [
     "image": "/images/becerra.jpg",
     "positions": {
       "healthcare": {
-        "supports": ["Universal healthcare coverage through public option", "Expanded access to mental health services in underserved communities", "Lower prescription drug costs through Medicare negotiation", "Protection of ACA pre-existing condition coverage"],
-        "opposes": ["Healthcare access restrictions for undocumented immigrants", "Rolling back ACA protections and coverage", "Privatization of Medicare and Medicaid", "Allowing insurance companies to deny coverage for pre-existing conditions"]
+        "supports": ["Universal single-payer healthcare system that puts people before profits", "Strengthen Medi-Cal to close racial and economic gaps", "Affordable care without debt or delays", "Healthcare as a human right"],
+        "opposes": ["Trump administration attacks on healthcare access", "Rolling back ACA protections and coverage", "Privatization of Medicare and Medicaid", "Allowing insurance companies to deny coverage for pre-existing conditions"]
       },
       "housing": {
-        "supports": ["State-funded affordable housing construction projects", "Strong renter protections with just-cause eviction requirements", "Incentives for developers to build low-income housing units", "Expansion of housing vouchers for low-income families"],
-        "opposes": ["No-cause evictions that displace long-term renters", "Housing discrimination based on source of income or immigration status", "Unaffordable rent increases without tenant protections", "Reducing affordable housing requirements for new developments"]
+        "supports": ["Build more affordable housing to make the California Dream possible", "Treat housing as essential infrastructure", "Fast-track new home construction", "Stop costs from rising out of control"],
+        "opposes": ["Housing costs rising out of control", "Lack of affordable homes for working families", "Policies that treat housing as luxury instead of essential infrastructure", "Endless lawsuits that block housing construction"]
       },
       "environment": {
-        "supports": ["Aggressive climate action with carbon neutrality goals by 2045", "Transition to 100% clean renewable energy sources", "Strong environmental protection regulations", "Expansion of protected wilderness areas and conservation programs"],
-        "opposes": ["Rolling back California's landmark environmental regulations", "New fossil fuel drilling and fracking projects", "Climate change denial and inaction on global warming", "Weakening air and water quality standards"]
+        "supports": ["Clean energy and grid resilience as public investments", "Ensure renters and low-income households share in energy benefits", "Fight climate change while strengthening reliability", "Make energy more affordable for everyone"],
+        "opposes": ["Energy mandates that unfairly burden working families", "Policies that don't ensure renters and low-income households share in energy benefits", "Energy policies that don't strengthen reliability", "Climate policies that make energy unaffordable"]
       },
       "education": {
         "supports": ["Increased K-12 education funding to reduce class sizes", "Free community college tuition for California residents", "Expanded student loan forgiveness programs", "Higher teacher salaries and recruitment incentives"],
         "opposes": ["Education budget cuts that hurt student achievement", "Student loan debt barriers preventing college access", "Underfunded schools in low-income communities", "School voucher programs that divert public funds to private schools"]
       },
       "economy": {
-        "supports": ["Economic equity through progressive wealth redistribution", "Job creation in green energy and clean technology sectors", "Higher minimum wage and worker protections", "Support for small businesses and local economic development"],
-        "opposes": ["Growing economic inequality and wealth concentration", "Environmental damage prioritized over corporate profits", "Worker exploitation through wage suppression", "Tax breaks for large corporations without worker benefits"]
+        "supports": ["Take on cost of living by standing up to price gouging", "Expand help with childcare and essential costs", "Use state power to lower prices where market has failed", "Raise stability and put families first"],
+        "opposes": ["Price gouging and unjustified rate hikes", "Rising costs from insurance and childcare to groceries", "Families falling behind while working hard", "Market failures that increase costs without accountability"]
       },
       "immigration": {
         "supports": ["Comprehensive immigrant rights and protections", "Clear pathways to citizenship for undocumented residents", "Protection for DACA and Dream Act recipients", "Sanctuary city policies and immigrant-friendly communities"],
-        "opposes": ["Family separation policies that traumatize children", "Deportation of law-abiding contributing immigrants", "Border wall construction and militarization", "Restrictive immigration policies that hurt California's economy"]
+        "opposes": ["Trump's attacks on immigrant communities", "Family separation policies that traumatize children", "Trump's extreme MAGA agenda", "Policies that divide communities and sow fear"]
       },
       "crime": {
         "supports": ["Community policing with police-community partnerships", "Comprehensive criminal justice reform and sentencing reform", "Investment in crime prevention and rehabilitation programs", "Police accountability and civilian oversight"],
@@ -77,8 +77,9 @@ export const candidates = [
       }
     },
     "keyEndorsements": [
-      "Various labor unions",
-      "Environmental organizations"
+      "California Labor Federation",
+      "Planned Parenthood Votes",
+      "League of Conservation Voters"
     ],
     "controversies": [
       "Faced criticism for COVID-19 pandemic response as HHS Secretary",
@@ -96,6 +97,13 @@ export const candidates = [
         "League of Conservation Voters"
       ]
     },
+    "accomplishments": [
+      "Sued the Trump Administration more than 120 times as California Attorney General",
+      "Expanded health coverage to more than 24 million Americans as HHS Secretary",
+      "Won landmark victories protecting Obamacare, working Californians, and Dreamers",
+      "Stood up to drug companies to lower prescription costs",
+      "First Latino to serve as U.S. Secretary of Health and Human Services"
+    ],
     "bio": "Xavier Becerra served as the U.S. Secretary of Health and Human Services under President Biden and previously as California's Attorney General. He has a long record in public service focusing on healthcare access and environmental protection."
   },
   {
@@ -111,28 +119,28 @@ export const candidates = [
     "image": "/images/porter.jpg",
     "positions": {
       "healthcare": {
-        "supports": ["Lowering healthcare costs through price negotiation and competition", "Strengthening and expanding the ACA with public option", "Prescription drug price controls and Medicare negotiation power", "Mental healthcare parity and expanded coverage"],
-        "opposes": ["Rolling back the ACA and its essential protections", "Healthcare access restrictions based on pre-existing conditions", "High drug prices that force patients to choose between medicine and food", "Insurance company practices that deny legitimate claims"]
+        "supports": ["Single-payer healthcare system for all Californians", "Protecting healthcare from Trump administration attacks", "Universal healthcare coverage", "Healthcare as a fundamental right"],
+        "opposes": ["Trump administration attacks on healthcare", "Healthcare policies that put profits over patients", "Rolling back the ACA and its essential protections", "Insurance company practices that deny legitimate claims"]
       },
       "housing": {
-        "supports": ["Housing affordability through rent stabilization and tenant protections", "Comprehensive homelessness programs with housing-first approach", "Increased affordable housing construction and preservation", "Down payment assistance for first-time homebuyers"],
-        "opposes": ["Unjust evictions without proper legal process", "Housing discrimination based on race, income, or family status", "Unaffordable rent increases that outpace wage growth", "Redlining and discriminatory lending practices"]
+        "supports": ["Lowering housing costs through federal investment", "Increased funding for Section 8 housing vouchers", "Federal government investment in housing response to crisis", "Housing affordability as urgent priority"],
+        "opposes": ["Federal inaction on housing crisis", "Housing costs that families cannot keep up with", "Talking points on affordability without actual action", "Policies that nibble around edges instead of lowering costs urgently"]
       },
       "environment": {
-        "supports": ["Aggressive climate action with carbon reduction targets", "Environmental justice initiatives for disadvantaged communities", "Clean energy transition and renewable energy investments", "Protection of natural habitats and biodiversity"],
-        "opposes": ["Environmental deregulation that harms public health", "Fossil fuel expansion and new drilling projects", "Climate inaction that threatens future generations", "Polluter-friendly policies that sacrifice communities"]
+        "supports": ["Protecting our planet through aggressive climate action", "Accountability for corporate polluters", "Protecting air and water quality", "Wildfires and climate resilience measures"],
+        "opposes": ["Corporate polluters without accountability", "Climate inaction that threatens future generations", "Policies that sacrifice communities for polluter profits", "Rolling back environmental regulations that protect health"]
       },
       "education": {
-        "supports": ["Comprehensive student debt relief and loan forgiveness", "Affordable college through tuition-free community college", "Increased funding for K-12 schools and teacher pay", "Early childhood education and universal pre-K"],
-        "opposes": ["Student loan debt without relief options", "High tuition costs without financial aid", "Education budget cuts", "Underfunded schools in low-income communities"]
+        "supports": ["Tuition-free college degree for all Californians", "Free childcare for all families", "Early childhood education and universal pre-K", "Increased funding for K-12 schools and teacher pay"],
+        "opposes": ["Student loan debt barriers preventing college access", "High tuition costs without financial aid", "Education policies that don't prepare students for jobs", "Talking points on education without action"]
       },
       "economy": {
-        "supports": ["Middle-class economic security through fair wages and benefits", "Corporate accountability and consumer protection enforcement", "Support for small businesses and local entrepreneurship", "Worker protections and union rights"],
-        "opposes": ["Corporate greed that puts profits over people", "Economic inequality that harms working families", "Worker exploitation through wage suppression", "Financial deregulation that risks economic stability"]
+        "supports": ["Fighting income inequality through progressive policies", "Free childcare for all working families", "Standing up to big corporations and special interests", "Making Californians' lives better through action"],
+        "opposes": ["Big corporations and special interests over people", "Corporate greed that puts profits over people", "Income inequality that harms working families", "Talking points on affordability without actual action"]
       },
       "immigration": {
-        "supports": ["Comprehensive immigration reform with pathway to citizenship", "Protection of immigrant families and children", "Streamlined legal immigration processes", "Integration programs for new immigrants"],
-        "opposes": ["Family separation policies that traumatize children", "Deportation of law-abiding contributing immigrants", "Border wall construction and militarization", "Anti-immigrant rhetoric and policies"]
+        "supports": ["Abolish ICE and reform immigration system", "Comprehensive immigration reform with pathway to citizenship", "Protection of immigrant families and children", "Streamlined legal immigration processes"],
+        "opposes": ["ICE enforcement that terrorizes communities", "Masked ICE agents terrorizing Californians", "Family separation policies that traumatize children", "Anti-immigrant policies that hurt California's economy"]
       },
       "crime": {
         "supports": ["Comprehensive gun safety measures and background checks", "Criminal justice reform and sentencing reform", "Community policing and police accountability", "Violence prevention and rehabilitation programs"],
@@ -176,8 +184,10 @@ export const candidates = [
       }
     },
     "keyEndorsements": [
-      "Progressive organizations",
-      "Women's groups"
+      "Communications Workers of America (CWA) District 9",
+      "California Environmental Voters (EnviroVoters)",
+      "California Federation of Labor",
+      "Congressman Robert Garcia"
     ],
     "controversies": [
       "Lost 2024 congressional primary to Dave Min",
@@ -195,6 +205,13 @@ export const candidates = [
         "Working Families Party"
       ]
     },
+    "accomplishments": [
+      "Famous for 'Whiteboard of Justice' questioning CEOs and government officials",
+      "Held powerful interests accountable when they cheated taxpayers",
+      "Consumer protection advocate helping families protect homes from predatory banks",
+      "Secured free COVID-19 testing commitment from CDC director",
+      "Questioned CFPB director on payday loan APR math problems"
+    ],
     "bio": "Katie Porter is a former U.S. Representative known for her sharp questioning in congressional hearings and focus on consumer protection and economic issues facing middle-class families."
   },
   {
@@ -210,28 +227,28 @@ export const candidates = [
     "image": "/images/steyer.jpg",
     "positions": {
       "healthcare": {
-        "supports": ["Universal healthcare through single-payer system", "Improved healthcare access with expanded coverage", "Medicare for All with comprehensive benefits", "Lower prescription drug costs through government negotiation"],
+        "supports": ["Ensure healthcare for all Californians", "Universal healthcare coverage", "Healthcare as fundamental right", "Comprehensive healthcare benefits"],
         "opposes": ["Healthcare access restrictions based on income or status", "Rolling back healthcare coverage and protections", "For-profit healthcare that prioritizes profits over patients", "Insurance company practices that deny necessary care"]
       },
       "housing": {
-        "supports": ["Addressing homelessness with housing-first approach", "Affordable housing through public investment and subsidies", "Rent stabilization and tenant protection laws", "Increased funding for homeless services and mental health support"],
-        "opposes": ["Evictions without proper legal process and support", "Housing discrimination based on race, income, or disability", "Unaffordable rent increases that displace families", "Policies that favor developers over affordable housing needs"]
+        "supports": ["Build one million affordable homes", "Housing affordability as urgent priority", "Address housing crisis through construction", "Make housing affordable for Californians"],
+        "opposes": ["Housing costs that Californians can no longer afford", "Policies that don't actually lower costs urgently", "Talking points on affordability without action", "Housing crisis that drives people out of California"]
       },
       "environment": {
-        "supports": ["Aggressive clean energy transition to 100% renewables by 2035", "Climate action with carbon neutrality goals and emissions reductions", "Phase-out of all fossil fuel extraction and combustion", "Massive investment in climate resilience and adaptation"],
-        "opposes": ["Fossil fuel expansion including new drilling and fracking", "Climate inaction that threatens global stability", "Rolling back environmental regulations that protect air and water", "Policies that prioritize short-term profits over climate survival"]
+        "supports": ["Defend the climate and environment", "Aggressive climate action and carbon reduction", "Protect natural habitats and biodiversity", "Climate resilience and adaptation measures"],
+        "opposes": ["Climate inaction that threatens global stability", "Rolling back environmental regulations that protect air and water", "Policies that prioritize short-term profits over climate survival", "Fossil fuel expansion that destroys climate and health"]
       },
       "education": {
-        "supports": ["Massive education investment in schools and teachers", "Workforce development for green economy and future jobs", "Free college tuition and student debt elimination", "Early childhood education and universal pre-K programs"],
-        "opposes": ["Education budget cuts", "Underfunded schools in low-income and minority communities", "Student loan debt without relief options", "Educational policies that maintain inequality"]
+        "supports": ["Provide free education from Pre-K to college", "Tuition-free college for all Californians", "Early childhood education and universal pre-K", "Massive education investment in schools and teachers"],
+        "opposes": ["Education costs that burden families", "Student loan debt without relief options", "Underfunded schools in low-income and minority communities", "Educational policies that maintain inequality"]
       },
       "economy": {
-        "supports": ["Clean energy economy with millions of green jobs", "Sustainable growth that balances prosperity and planet", "Economic justice through fair wages and wealth redistribution", "Support for small businesses and local economies"],
-        "opposes": ["Fossil fuel economy that destroys climate and health", "Environmental damage prioritized over corporate profits", "Economic inequality that concentrates wealth and power", "Short-term growth at expense of long-term sustainability"]
+        "supports": ["Make corporations and billionaires pay more taxes", "Close tax loopholes for wealthy", "Lower costs for working families", "Economic justice through fair tax policies"],
+        "opposes": ["Tax cuts for wealthy individuals and corporations", "Corporate tax loopholes and profit shifting", "Tax policies that favor corporations over working families", "Economic inequality that concentrates wealth and power"]
       },
       "immigration": {
-        "supports": ["Comprehensive immigrant rights and protections", "Immigration reform with pathway to citizenship", "Protection of immigrant families and workers", "Sanctuary policies and immigrant integration programs"],
-        "opposes": ["Family separation policies that traumatize children", "Deportation of law-abiding contributing immigrants", "Border wall construction and militarization", "Anti-immigrant policies that hurt California's economy"]
+        "supports": ["Abolish ICE and stop masked agents from terrorizing Californians", "Comprehensive immigrant rights and protections", "Immigration reform with pathway to citizenship", "Protection of immigrant families and workers"],
+        "opposes": ["ICE enforcement that terrorizes communities", "Masked ICE agents terrorizing Californians", "Family separation policies that traumatize children", "Anti-immigrant policies that hurt California's economy"]
       },
       "crime": {
         "supports": ["Comprehensive criminal justice reform and sentencing reform", "Community investment in education and mental health", "Violence prevention and rehabilitation programs", "Police accountability and civilian oversight"],
@@ -275,8 +292,13 @@ export const candidates = [
       }
     },
     "keyEndorsements": [
-      "Climate organizations",
-      "Environmental groups"
+      "Betty Yee (Former California State Controller)",
+      "Our Revolution",
+      "California Federation of Labor",
+      "Senator Sheldon Whitehouse (RI)",
+      "Assemblymember Dr. LaShae Sharp-Collins",
+      "Assemblymember Tina McKinnor",
+      "SmartJustice"
     ],
     "controversies": [
       "Spent over $100 million on 2020 presidential campaign without winning any delegates",
@@ -293,6 +315,14 @@ export const candidates = [
         "Climate Action Fund"
       ]
     },
+    "accomplishments": [
+      "Walked away from successful business to devote life to public service",
+      "Signed The Giving Pledge to give away majority of wealth during lifetime",
+      "Led ballot propositions to defeat Big Oil on climate",
+      "Closed corporate tax loophole for out-of-state companies",
+      "Took on Big Tobacco to raise cigarette tax",
+      "Raised billions for California healthcare and public schools without taxpayer cost"
+    ],
     "bio": "Tom Steyer is a businessman and philanthropist who has focused heavily on climate change advocacy. He ran for president in 2020 and has invested significantly in progressive causes."
   },
   {
@@ -312,24 +342,24 @@ export const candidates = [
         "opposes": ["Healthcare access restrictions based on income or immigration status", "Rolling back healthcare coverage and ACA protections", "For-profit healthcare that prioritizes profits over patients", "Policies that create healthcare access gaps in underserved communities"]
       },
       "housing": {
-        "supports": ["Affordable housing construction and preservation", "Addressing student homelessness with housing-first approach", "Rent stabilization and tenant protections", "Increased funding for homeless youth and family services"],
-        "opposes": ["Evictions without proper legal process and support", "Housing discrimination based on race, income, or family status", "Housing policies that fail to address student homelessness", "Rent control restrictions that allow unaffordable increases"]
+        "supports": ["Addressing student homelessness with housing-first approach", "Affordable housing construction and preservation", "Increased funding for homeless youth and family services", "Rent stabilization and tenant protections"],
+        "opposes": ["Student homelessness that affects learning", "Housing policies that fail to address student homelessness", "Evictions without proper legal process and support", "Housing discrimination based on race, income, or family status"]
       },
       "environment": {
         "supports": ["Environmental education in all K-12 schools", "Climate action education and student engagement", "Green schools and sustainable campus initiatives", "Environmental justice education for underserved communities"],
         "opposes": ["Climate inaction that threatens future generations", "Rolling back environmental regulations that protect health", "Environmental education cuts that limit student understanding", "Policies that ignore environmental justice concerns"]
       },
       "education": {
-        "supports": ["Massive increased education funding for K-12 schools", "Teacher support through higher salaries and professional development", "Education equity for underserved and minority communities", "Universal pre-K and early childhood education programs"],
-        "opposes": ["Education budget cuts that harm student achievement", "Underfunded schools in low-income and minority communities", "Policies that contribute to teacher shortages", "Educational policies that maintain inequality and achievement gaps"]
+        "supports": ["Universal preschool for 4-year-olds", "Universal meals for hungry kids", "Billions in funds to make schools safer by removing asbestos and toxins", "Sponsored law to keep ICE out of California schools"],
+        "opposes": ["Education budget cuts that harm student achievement", "Underfunded schools in low-income and minority communities", "Policies that contribute to teacher shortages", "ICE in schools that harm immigrant students"]
       },
       "economy": {
         "supports": ["Workforce development through education and training partnerships", "Job training programs for emerging industries and green jobs", "Economic opportunities for youth and disadvantaged communities", "Support for small businesses and local entrepreneurship"],
         "opposes": ["Minimum wage elimination policies removing wage floors", "Workforce development programs without industry alignment", "Economic policies that favor corporations over workers", "Opposition to minimum wage increases for working families"]
       },
       "immigration": {
-        "supports": ["Support for immigrant students and English language learners", "Protection of immigrant families and communities", "Sanctuary policies that protect immigrant rights", "Integration programs for immigrant students and families"],
-        "opposes": ["Family separation policies that traumatize children", "Deportation of students who are contributing to their communities", "Border wall construction and militarization", "Anti-immigrant policies that hurt California's diverse communities"]
+        "supports": ["Keep ICE out of California schools", "Support for immigrant students and English language learners", "Protection of immigrant families and communities", "Sanctuary policies that protect immigrant rights"],
+        "opposes": ["ICE in schools that harm immigrant students", "Deportation of students who are contributing to their communities", "Family separation policies that traumatize children", "Anti-immigrant policies that hurt California's diverse communities"]
       },
       "crime": {
         "supports": ["School safety through mental health support and counseling", "Youth violence prevention through community programs", "School resource officers with proper training", "Conflict resolution and restorative justice programs"],
@@ -373,8 +403,18 @@ export const candidates = [
       }
     },
     "keyEndorsements": [
-      "Teachers unions",
-      "Education organizations"
+      "California Faculty Association (CFA)",
+      "Black Women Organized for Political Action (BWOPA) PAC",
+      "International Brotherhood of Electrical Workers (IBEW) Local 302",
+      "International Brotherhood of Electrical Workers (IBEW) Local 952",
+      "National Association of Social Workers - California",
+      "Harvey Milk LGBTQ Democratic Club",
+      "Congresswoman Laura Friedman",
+      "Former Congresswoman Barbara Lee",
+      "State Senator Dr. Akilah Weber Pierson",
+      "State Senator Jesse Arreguín",
+      "State Assemblymember Sabrina Cervantes",
+      "Former Superintendent Jack O'Connell"
     ],
     "controversies": [
       "Faced criticism over California's standardized test scores during tenure",
@@ -391,6 +431,15 @@ export const candidates = [
         "California Federation of Teachers"
       ]
     },
+    "accomplishments": [
+      "Secured $1.5 billion investment in professional learning for educators",
+      "Championed $2.7 billion Universal Transitional Kindergarten program",
+      "Established Family Engagement Unit at California Department of Education",
+      "Secured $250 million for Literacy Coaches and $15 million for educator certifications",
+      "Launched Black Student Achievement Taskforce to address systemic racism",
+      "Expanded access to low-cost internet to thousands of school children",
+      "Reduced school suspensions by 27% through targeted programs"
+    ],
     "bio": "Tony Thurmond is California's Superintendent of Public Instruction with a strong focus on education equity. He previously served in the State Assembly and has worked on youth and education issues throughout his career."
   },
   {
@@ -410,24 +459,24 @@ export const candidates = [
         "opposes": ["Healthcare access restrictions based on income or status", "Government price controls that reduce healthcare quality and innovation", "For-profit healthcare that prioritizes profits over patients", "Insurance company practices that deny necessary care"]
       },
       "housing": {
-        "supports": ["Massive housing production and construction", "Addressing homelessness with comprehensive services", "Streamlined approval processes for new housing", "Mixed-income development and affordable housing mandates"],
-        "opposes": ["Housing first policies without requiring mental health treatment or sobriety", "Opposition to mandatory mental health treatment requirements for homeless services", "Policies preventing removal of homeless encampments from public spaces", "Funding for permanent supportive housing without accountability measures"]
+        "supports": ["Fast-track new home construction", "Streamline permitting and challenge local opposition", "Build energy grid, water storage, and transportation infrastructure", "Reform CEQA to minimize environmental effects"],
+        "opposes": ["Endless lawsuits and bureaucratic inertia that grind progress to halt", "CEQA abuse that slows or stops developments", "Policies that make housing unaffordable", "Overregulation that prevents building"]
       },
       "environment": {
-        "supports": ["Clean energy transition and renewable development", "Environmental initiatives for urban sustainability", "Green infrastructure and climate resilience", "Environmental justice for disadvantaged communities"],
-        "opposes": ["Environmental deregulation that harms public health", "Fossil fuel expansion and new drilling projects", "Climate inaction that threatens future generations", "Policies that sacrifice environment for development"]
+        "supports": ["All of the Above energy policy with renewables, nuclear, natural gas, and gas cars", "Keep commitment to tackling climate change", "Build greater solar and wind generation capacity", "Build transmission lines to meet energy goals"],
+        "opposes": ["Energy mandates that unfairly burden working families", "Slowest transmission approval among western states", "Policies that prevent meeting energy goals", "Environmental regulations that block necessary infrastructure"]
       },
       "education": {
         "supports": ["Comprehensive education reform and accountability", "School choice options including charter schools", "Increased funding for underperforming schools", "Teacher accountability and performance-based pay"],
-        "opposes": ["School choice restrictions that limit parent options", "Underfunded schools in low-income communities", "Educational bureaucracy that reduces efficiency", "Standardized testing policies that narrow curriculum"],
+        "opposes": ["School choice restrictions that limit parent options", "Underfunded schools in low-income communities", "Educational bureaucracy that reduces efficiency", "Standardized testing policies that narrow curriculum"]
       },
       "economy": {
-        "supports": ["Job creation through infrastructure and green energy projects", "Economic development in underserved communities", "Public-private partnerships for economic growth", "Support for small businesses and local entrepreneurship"],
-        "opposes": ["Minimum wage elimination policies removing wage floors", "Regulatory barriers that prevent business growth and job creation", "Excessive taxation policies that reduce investment", "Trade agreements without worker protections and environmental standards"]
+        "supports": ["Stand up to Donald Trump and protect California", "Protect immigrant communities", "Ensure fairness for every Californian", "Defend democracy and California values"],
+        "opposes": ["Trump's extreme MAGA agenda", "Policies that divide communities", "Trump's attacks on California", "Federal government slashing funding and cutting jobs"]
       },
       "immigration": {
-        "supports": ["Comprehensive immigration reform with pathway to citizenship", "Immigrant integration through education and job programs", "Sanctuary policies and immigrant-friendly communities", "Economic opportunities for immigrant workers and families"],
-        "opposes": ["Family separation policies that traumatize children", "Deportation of contributing immigrants and workers", "Anti-immigrant policies that hurt California's economy", "Border enforcement that harms communities"]
+        "supports": ["Stand up to Trump and protect immigrant communities", "Protect immigrant communities from federal attacks", "Ensure fairness for every Californian", "Defend California values"],
+        "opposes": ["Trump's extreme MAGA agenda", "Family separation policies", "Border wall construction and militarization", "Anti-immigrant policies"]
       },
       "crime": {
         "supports": ["Law enforcement support and funding", "Public safety measures including community policing", "Crime prevention through education and opportunity", "Criminal justice reform that maintains public safety"],
@@ -471,8 +520,14 @@ export const candidates = [
       }
     },
     "keyEndorsements": [
-      "Business groups",
-      "Moderate Democrats"
+      "Building and Construction Trades Council of California",
+      "Peace Officers Research Association of California (PORAC)",
+      "California State Association of Electrical Workers",
+      "California State Pipe Trades Council",
+      "California-Nevada Conference of Operating Engineers",
+      "Former Senator Barbara Boxer",
+      "Los Angeles Mayor Karen Bass",
+      "Former Assembly Speaker John A. Pérez"
     ],
     "controversies": [
       "2018 gubernatorial campaign faced criticism over past policy positions",
@@ -489,6 +544,14 @@ export const candidates = [
         "Building Trades Council"
       ]
     },
+    "accomplishments": [
+      "Served as California State Assembly Speaker 1998-2000",
+      "Mayor of Los Angeles 2005-2013, led city out of Great Recession",
+      "Championed major infrastructure projects and environmental initiatives",
+      "Made Los Angeles a global leader in tackling climate change",
+      "Slashed violent crime through smart policing and community collaboration",
+      "California's Infrastructure Advisor creating blueprint for unprecedented funding"
+    ],
     "bio": "Antonio Villaraigosa is the former Mayor of Los Angeles and former Speaker of the California State Assembly. He has extensive experience in municipal government and has run for governor previously."
   },
   {
@@ -505,31 +568,31 @@ export const candidates = [
     "positions": {
       "healthcare": {
         "supports": ["Universal healthcare access through public-private partnerships", "Expanded mental health services in urban communities", "Technology-enabled healthcare delivery and telemedicine", "Healthcare innovation hubs and digital health solutions"],
-        "opposes": ["Healthcare access restrictions based on income or location", "Lack of mental health services in underserved communities", "Outdated healthcare delivery systems", "Healthcare policies that don't leverage technology"],
+        "opposes": ["Healthcare access restrictions based on income or location", "Lack of mental health services in underserved communities", "Outdated healthcare delivery systems", "Healthcare policies that don't leverage technology"]
       },
       "housing": {
-        "supports": ["Massive housing production through technology and innovation", "Streamlining development processes with digital permits", "Smart city planning and sustainable urban development", "Public-private partnerships for affordable housing"],
-        "opposes": ["Housing shortage that drives up costs and displaces residents", "Overregulation of development that slows construction", "Outdated zoning laws that prevent housing growth", "Bureaucratic barriers to housing development"],
+        "supports": ["Cut excessive regulation and red tape to build homes", "Housing you can actually afford", "Fast-track new home construction", "Lower housing costs through reduced regulation"],
+        "opposes": ["Excessive regulation and red tape that blocks construction", "Overregulation that prevents building new homes", "Bureaucratic barriers to housing development", "Policies that make housing unaffordable through regulation"]
       },
       "environment": {
         "supports": ["Climate action through technology and innovation", "Sustainability initiatives for smart cities", "Green infrastructure and clean energy adoption", "Environmental technology and data-driven solutions"],
-        "opposes": ["Climate inaction that threatens urban sustainability", "Environmental neglect that harms public health", "Outdated environmental policies that ignore technology", "Policies that sacrifice environment for development"],
+        "opposes": ["Climate inaction that threatens urban sustainability", "Environmental neglect that harms public health", "Outdated environmental policies that ignore technology", "Policies that sacrifice environment for development"]
       },
       "education": {
         "supports": ["Education innovation through technology and digital learning", "Workforce preparation for tech and innovation economy", "STEM education and computer science in schools", "Public-private partnerships for education technology"],
-        "opposes": ["Outdated education methods that don't prepare students", "Skills gap between education and job market", "One-size-fits-all approach to education", "Education policies that ignore technology and innovation"],
+        "opposes": ["Outdated education methods that don't prepare students", "Skills gap between education and job market", "One-size-fits-all approach to education", "Education policies that ignore technology and innovation"]
       },
       "economy": {
-        "supports": ["Tech industry growth through supportive policies", "Innovation economy with startups and entrepreneurship", "Public-private partnerships for economic development", "Smart city initiatives and digital infrastructure"],
-        "opposes": ["Economic stagnation and lack of opportunity", "Lack of innovation investment and funding", "Over-regulation that stifles tech growth", "Policies that drive tech companies out of California"],
+        "supports": ["Make life more affordable for working families", "Accountability in government", "Build future that works for all Californians not just those at top", "Prioritize policy and results that improve lives"],
+        "opposes": ["Government that doesn't deliver results", "Policies that only help those at the top", "Lack of accountability in government spending", "Dangerous MAGA agenda or funding failure"]
       },
       "immigration": {
         "supports": ["Immigrant integration through community programs", "Tech talent retention and attraction", "Startup visas for immigrant entrepreneurs", "Pathways for skilled workers and innovators"],
-        "opposes": ["Immigration restrictions that harm tech industry", "Brain drain of talent to other regions", "Anti-immigrant policies that hurt innovation", "Barriers to skilled worker immigration"],
+        "opposes": ["Immigration restrictions that harm tech industry", "Brain drain of talent to other regions", "Anti-immigrant policies that hurt innovation", "Barriers to skilled worker immigration"]
       },
       "crime": {
-        "supports": ["Public safety through technology and data-driven policing", "Community policing with IoT sensors and data analytics for crime prevention", "Crime prevention through innovation and prevention programs", "Public-private partnerships for safety technology"],
-        "opposes": ["Crime that harms communities and economic growth", "Public safety threats from violence and property crime", "Outdated policing methods that ignore technology", "Underfunded public safety and emergency services"],
+        "supports": ["Prioritizing public safety", "Community policing and hired more officers", "Invested in community policing", "Make San Jose safest big city in America"],
+        "opposes": ["Public safety threats from violence and property crime", "Underfunded public safety and emergency services", "Policies that don't prioritize public safety", "Crime that harms communities and economic growth"]
       },
       "taxes": {
         "supports": ["Tech-friendly tax policies that encourage innovation", "Tax incentives for R&D and technology investment", "Startup tax credits and entrepreneur support", "Efficient government spending through technology"],
@@ -568,6 +631,19 @@ export const candidates = [
         "opposes": ["High costs for families and businesses", "Economic stagnation", "Outdated policies that don't address affordability", "Underfunded innovation programs"]
       }
     },
+    "keyEndorsements": [
+      "Colorado Governor Jared Polis",
+      "Congressman Ami Bera",
+      "Congressman Sam Liccardo",
+      "Senator Catherine Blakespear",
+      "Assemblymember Maggy Krell",
+      "Santa Clara County District Attorney Jeff Rosen",
+      "San Francisco Supervisor Matt Dorsey",
+      "San Francisco Supervisor Bilal Mahmood",
+      "Santa Clara Mayor Lisa Gillmor",
+      "Elk Grove Mayor Bobbie Singh-Allen",
+      "San Jose Vice Mayor Pam Foley"
+    ],
     "controversies": [
       "Faced criticism over San Jose's handling of homeless encampments",
       "Debates over development policies and housing density in San Jose"
@@ -583,6 +659,13 @@ export const candidates = [
         "Bay Area Council"
       ]
     },
+    "accomplishments": [
+      "Elected Mayor of San Jose 2022, currently in first term",
+      "Former tech entrepreneur focused on civic innovation",
+      "Reduced homelessness by one-third in San Jose through targeted programs",
+      "Prioritized public safety with community policing approach",
+      "Leveraged technology to solve civic challenges and improve city services"
+    ],
     "bio": "Matt Mahan is the current Mayor of San Jose and a former tech entrepreneur. He focuses on innovation, housing, and leveraging technology to solve civic challenges."
   },
   {
@@ -662,7 +745,20 @@ export const candidates = [
         "opposes": ["Inflation caused by government spending and money printing", "Government overreach that increases costs and reduces freedom", "Minimum wage increases that hurt small businesses", "Price controls that create shortages and reduce quality"]
       }
     },
-    "keyEndorsements": [],
+    "keyEndorsements": [
+      "California State Sheriffs' Association",
+      "Congressman Darrell Issa",
+      "Congressman Ken Calvert",
+      "Assemblyman Greg Wallis",
+      "Assemblyman Heath Flora",
+      "Assemblyman Phillip Chen",
+      "Assemblyman Jeff Gonzalez",
+      "Assemblyman Tom Lackey",
+      "Assemblywoman Diane Dixon",
+      "Assemblywoman Heather Hadwick",
+      "Orange County Sheriff Don Barnes",
+      "Riverside County District Attorney Mike Hestrin"
+    ],
     "controversies": [
       "Received $78,400 donations from two companies controlled by same siblings, which could violate California campaign finance law if aggregated",
       "Called environmental activists 'terrorists' and disputed climate change's role in wildfires"
@@ -672,6 +768,13 @@ export const candidates = [
       "fundsRaised": "N/A",
       "supportingPACs": []
     },
+    "accomplishments": [
+      "Riverside County Sheriff-Coroner since 2019",
+      "Extensive law enforcement experience focusing on public safety",
+      "Strong supporter of border security and immigration enforcement",
+      "Advocate for criminal justice reform from law enforcement perspective",
+      "Led efforts to address homelessness and public safety in Riverside County"
+    ],
     "bio": "Chad Bianco is the Riverside County Sheriff-Coroner with extensive law enforcement experience. As sheriff, he focuses on public safety, border security, and criminal justice reform from a law enforcement perspective."
   },
   {
@@ -751,7 +854,11 @@ export const candidates = [
         "opposes": ["Government intervention that increases costs and reduces freedom", "Inflation caused by excessive government spending", "Price controls that create shortages and reduce quality", "Minimum wage increases that hurt small businesses and reduce employment"]
       }
     },
-    "keyEndorsements": [],
+    "keyEndorsements": [
+      "President Donald Trump",
+      "U.S. Rep. Kevin Kiley",
+      "U.S. Rep. Tom McClintock"
+    ],
     "controversies": [
       "Called an inexperienced talking head and dilettante by debate opponents",
       "Criticized for close alignment with Trump administration on immigration policies"
@@ -761,6 +868,13 @@ export const candidates = [
       "fundsRaised": "$4.1M",
       "supportingPACs": []
     },
+    "accomplishments": [
+      "Political commentator and former adviser to UK Prime Minister David Cameron",
+      "Brings international policy experience from UK government",
+      "Populist perspective focused on challenging political establishments",
+      "Advocate for working-class interests and economic opportunity",
+      "Endorsed by President Donald Trump for California governor"
+    ],
     "bio": "Steve Hilton is a political commentator and former adviser to UK Prime Minister David Cameron. He brings international policy experience and a populist perspective, focusing on challenging political establishments and advocating for working-class interests."
   },
   {

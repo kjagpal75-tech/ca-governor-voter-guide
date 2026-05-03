@@ -44,23 +44,58 @@ function App() {
         const candidatePosition = candidate.positions[issue.id]
         
         if (candidatePosition && candidatePosition.supports && candidatePosition.opposes) {
-          Object.entries(userAnswers).forEach(([position, stance]) => {
+          Object.entries(userAnswers).forEach(([question, stance]) => {
             if (stance === 'support') {
-              // User supports this position - check if candidate supports it
-              if (candidatePosition.supports.includes(position)) {
+              // Check if this question aligns with candidate's supported positions
+              const questionKeywords = question.toLowerCase()
+              const candidateSupports = candidatePosition.supports.join(' ').toLowerCase()
+              const candidateOpposes = candidatePosition.opposes.join(' ').toLowerCase()
+              
+              // Simple keyword matching - if question contains keywords from candidate's supports
+              const supportsMatch = candidatePosition.supports.some(support => 
+                questionKeywords.includes(support.toLowerCase().split(' ')[0]) || 
+                support.toLowerCase().includes(questionKeywords.split(' ')[0])
+              )
+              
+              const opposesMatch = candidatePosition.opposes.some(oppose => 
+                questionKeywords.includes(oppose.toLowerCase().split(' ')[0]) || 
+                oppose.toLowerCase().includes(questionKeywords.split(' ')[0])
+              )
+              
+              if (supportsMatch) {
                 matchScore += 1
                 totalMatches += 1
-              } else if (candidatePosition.opposes.includes(position)) {
+              } else if (opposesMatch) {
                 matchScore -= 1
+                totalMatches += 1
+              } else {
+                // No clear match, but count it as considered
                 totalMatches += 1
               }
             } else if (stance === 'oppose') {
-              // User opposes this position - check if candidate opposes it
-              if (candidatePosition.opposes.includes(position)) {
+              // User opposes this question - check if candidate opposes related positions
+              const questionKeywords = question.toLowerCase()
+              const candidateSupports = candidatePosition.supports.join(' ').toLowerCase()
+              const candidateOpposes = candidatePosition.opposes.join(' ').toLowerCase()
+              
+              const supportsMatch = candidatePosition.supports.some(support => 
+                questionKeywords.includes(support.toLowerCase().split(' ')[0]) || 
+                support.toLowerCase().includes(questionKeywords.split(' ')[0])
+              )
+              
+              const opposesMatch = candidatePosition.opposes.some(oppose => 
+                questionKeywords.includes(oppose.toLowerCase().split(' ')[0]) || 
+                oppose.toLowerCase().includes(questionKeywords.split(' ')[0])
+              )
+              
+              if (opposesMatch) {
                 matchScore += 1
                 totalMatches += 1
-              } else if (candidatePosition.supports.includes(position)) {
+              } else if (supportsMatch) {
                 matchScore -= 1
+                totalMatches += 1
+              } else {
+                // No clear match, but count it as considered
                 totalMatches += 1
               }
             }
@@ -77,34 +112,107 @@ function App() {
   }
 
   const getIssueOptions = (issueId) => {
-    // Dynamically extract unique positions from all candidates for this issue
-    const allPositions = new Set()
-    candidates.forEach(candidate => {
-      const position = candidate.positions[issueId]
-      if (position && position.supports) {
-        position.supports.forEach(pos => allPositions.add(pos))
-      }
-      if (position && position.opposes) {
-        position.opposes.forEach(pos => allPositions.add(pos))
-      }
-    })
-    // Filter out non-actionable positions and convert to array
-    const positions = Array.from(allPositions).filter(pos => {
-      // Filter out descriptive statements that don't make sense as user choices
-      const nonActionablePatterns = [
-        /outdated.*systems/i,
-        /lack of.*services/i,
-        /limited access to/i,
-        /policies that don't/i,
-        /underfunded.*systems/i,
-        /bureaucratic.*barriers/i
+    // Define contextual quiz questions for each issue
+    const contextualQuestions = {
+      healthcare: [
+        "Should California implement a universal single-payer healthcare system that provides coverage to all residents?",
+        "Should the state strengthen Medi-Cal and expand healthcare access for low-income communities?",
+        "Should healthcare be treated as a fundamental human right with guaranteed access for all?",
+        "Should California protect and expand the Affordable Care Act provisions?"
+      ],
+      housing: [
+        "Should California significantly increase funding for affordable housing construction?",
+        "Should the state streamline approval processes to accelerate housing development?",
+        "Should housing be treated as essential infrastructure like roads and schools?",
+        "Should California implement rent control measures to protect tenants?"
+      ],
+      environment: [
+        "Should California accelerate its transition to 100% clean energy by 2035?",
+        "Should the state impose stricter regulations on corporate polluters?",
+        "Should California invest heavily in public transportation to reduce car dependency?",
+        "Should the state prioritize climate action even if it increases short-term costs?"
+      ],
+      education: [
+        "Should California provide free community college tuition for all residents?",
+        "Should the state significantly increase K-12 education funding to reduce class sizes?",
+        "Should California expand student loan forgiveness programs?",
+        "Should teacher salaries be increased to address the educator shortage?"
+      ],
+      economy: [
+        "Should California implement higher taxes on wealthy individuals and corporations?",
+        "Should the state provide universal childcare to support working families?",
+        "Should California use price controls to combat inflation and cost of living increases?",
+        "Should the state prioritize economic growth over environmental regulations?"
+      ],
+      immigration: [
+        "Should California provide universal healthcare to undocumented immigrants?",
+        "Should the state create a clear pathway to citizenship for undocumented residents?",
+        "Should California expand sanctuary city policies and limit cooperation with federal immigration enforcement?",
+        "Should the state provide driver's licenses and other services to all residents regardless of immigration status?"
+      ],
+      crime: [
+        "Should California implement comprehensive criminal justice reform and reduce prison populations?",
+        "Should police departments receive increased funding and training?",
+        "Should the state eliminate cash bail and reform pretrial detention?",
+        "Should California invest more in crime prevention and community programs rather than incarceration?"
+      ],
+      taxes: [
+        "Should California implement a wealth tax on ultra-millionaires to fund public services?",
+        "Should corporate tax rates be increased to reduce income inequality?",
+        "Should property taxes be reformed to increase education funding?",
+        "Should California reduce taxes on businesses to stimulate economic growth?"
+      ],
+      infrastructure: [
+        "Should California invest billions in high-speed rail and public transportation?",
+        "Should the state prioritize water infrastructure projects to address drought?",
+        "Should California increase funding for road and bridge maintenance?",
+        "Should infrastructure projects be fast-tracked even if they increase taxes?"
+      ],
+      greenEnergy: [
+        "Should California ban the sale of new gasoline cars by 2035?",
+        "Should the state require all new buildings to have solar panels?",
+        "Should California invest in nuclear power to meet clean energy goals?",
+        "Should offshore oil drilling be banned entirely along the California coast?"
+      ],
+      technology: [
+        "Should California regulate artificial intelligence to protect workers and consumers?",
+        "Should the state invest in broadband internet access for underserved communities?",
+        "Should Big Tech companies be broken up to increase competition?",
+        "Should California protect digital privacy rights with stricter regulations?"
+      ],
+      water: [
+        "Should California invest in desalination plants to address water shortages?",
+        "Should agricultural water use be restricted during drought conditions?",
+        "Should water rates be increased to encourage conservation?",
+        "Should California build more water storage reservoirs?"
+      ],
+      wildfires: [
+        "Should California dramatically increase funding for wildfire prevention and forest management?",
+        "Should new construction in high-risk wildfire areas be banned?",
+        "Should insurance companies be required to provide coverage in wildfire-prone areas?",
+        "Should California invest in advanced firefighting technology and equipment?"
+      ],
+      reproductiveRights: [
+        "Should California protect and expand abortion access regardless of federal restrictions?",
+        "Should the state provide funding for reproductive healthcare services?",
+        "Should California protect healthcare providers who perform abortions from legal action?",
+        "Should reproductive healthcare be guaranteed as a fundamental right?"
+      ],
+      gunPolicy: [
+        "Should California implement stricter gun control measures including assault weapon bans?",
+        "Should all gun purchases require background checks and waiting periods?",
+        "Should California allow concealed carry permits in more public places?",
+        "Should gun manufacturers be held liable for gun violence?"
+      ],
+      costOfLiving: [
+        "Should California implement price controls on essential goods and services?",
+        "Should the state provide direct cash assistance to low-income families?",
+        "Should California increase the minimum wage to $20 per hour?",
+        "Should rent control be implemented statewide to protect tenants?"
       ]
-      return !nonActionablePatterns.some(pattern => pattern.test(pos))
-    })
-    // Prioritize shorter, more understandable positions
-    return positions
-      .sort((a, b) => a.length - b.length) // Shorter positions first
-      .slice(0, 6) // Limit to 6 for better user experience
+    }
+
+    return contextualQuestions[issueId] || []
   }
 
   if (view === 'home') {
@@ -190,6 +298,66 @@ function App() {
             </div>
           </div>
         </main>
+        
+        {/* Privacy Footer */}
+        <footer className="bg-gray-100 border-t border-gray-200 mt-8">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center space-y-4">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">
+                  🔒 Privacy Notice
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+                  This website does not collect, store, or transmit any personal data. No tracking, analytics, or user information is gathered. 
+                  This tool is provided solely to assist individuals with their voting preferences through private, local calculations.
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto mt-2">
+                  All candidate information and policy positions are 100% sourced from publicly available information, including official websites, 
+                  public statements, campaign materials, and government records.
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-300 pt-4">
+                <p className="text-sm text-gray-600 font-medium mb-3">
+                  📚 Data Sources
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto text-xs">
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Official Campaign Websites</p>
+                    <p className="text-gray-500">Candidate campaign sites and official statements</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">California Government</p>
+                    <p className="text-gray-500">CA Secretary of State voter guide and official records</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Public Debates & Forums</p>
+                    <p className="text-gray-500">Transcribed debates and public appearances</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">News Coverage</p>
+                    <p className="text-gray-500">Major California news outlets and interviews</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Voting Records</p>
+                    <p className="text-gray-500">Public legislative voting history and positions</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Policy Documents</p>
+                    <p className="text-gray-500">Published policy papers and platform statements</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-400">
+                <span>• No Data Collection</span>
+                <span>• No User Tracking</span>
+                <span>• 100% Private</span>
+                <span>• Public Sources Only</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
@@ -265,6 +433,66 @@ function App() {
             ))}
           </div>
         </main>
+        
+        {/* Privacy Footer */}
+        <footer className="bg-gray-100 border-t border-gray-200 mt-8">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center space-y-4">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">
+                  🔒 Privacy Notice
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+                  This website does not collect, store, or transmit any personal data. No tracking, analytics, or user information is gathered. 
+                  This tool is provided solely to assist individuals with their voting preferences through private, local calculations.
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto mt-2">
+                  All candidate information and policy positions are 100% sourced from publicly available information, including official websites, 
+                  public statements, campaign materials, and government records.
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-300 pt-4">
+                <p className="text-sm text-gray-600 font-medium mb-3">
+                  📚 Data Sources
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto text-xs">
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Official Campaign Websites</p>
+                    <p className="text-gray-500">Candidate campaign sites and official statements</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">California Government</p>
+                    <p className="text-gray-500">CA Secretary of State voter guide and official records</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Public Debates & Forums</p>
+                    <p className="text-gray-500">Transcribed debates and public appearances</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">News Coverage</p>
+                    <p className="text-gray-500">Major California news outlets and interviews</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Voting Records</p>
+                    <p className="text-gray-500">Public legislative voting history and positions</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Policy Documents</p>
+                    <p className="text-gray-500">Published policy papers and platform statements</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-400">
+                <span>• No Data Collection</span>
+                <span>• No User Tracking</span>
+                <span>• 100% Private</span>
+                <span>• Public Sources Only</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
@@ -328,175 +556,249 @@ function App() {
           </div>
 
           {comparisonCandidates.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b">
-                      Issue
-                    </th>
-                    {comparisonCandidates.map(candidate => (
-                      <th key={candidate.id} className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b border-l">
+            <div className="space-y-6">
+              {/* Candidate Profile Sections */}
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <thead>
+                    <tr>
+                      <th className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b">
+                        Profile
+                      </th>
+                      {comparisonCandidates.map(candidate => (
+                        <th key={candidate.id} className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b border-l">
+                          <div className="flex items-center gap-2">
+                            <div className="w-10 h-10 rounded-md overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
+                              {candidate.image && candidate.image !== '👤' ? (
+                                <img 
+                                  src={candidate.image}
+                                  alt={candidate.name}
+                                  className="w-full h-full object-cover"
+                                  style={{ width: '40px', height: '40px' }}
+                                />
+                              ) : (
+                                <span className="text-xl">👤</span>
+                              )}
+                            </div>
+                            <div>
+                              {candidate.name}
+                              <span className="block text-xs font-normal text-gray-500">{candidate.party}</span>
+                            </div>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="px-3 py-2 border border-gray-200 bg-white">
                         <div className="flex items-center gap-2">
-                          <div className="w-10 h-10 rounded-md overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
-                            {candidate.image && candidate.image !== '👤' ? (
-                              <img 
-                                src={candidate.image}
-                                alt={candidate.name}
-                                className="w-full h-full object-cover"
-                                style={{ width: '40px', height: '40px' }}
-                              />
-                            ) : (
-                              <span className="text-xl">👤</span>
+                          <span className="text-xl bg-orange-50 p-1.5 rounded">🏆</span>
+                          <span className="font-semibold text-gray-900 text-xs">Accomplishments & Track Record</span>
+                        </div>
+                      </td>
+                      {comparisonCandidates.map(candidate => (
+                        <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
+                          {candidate.accomplishments && candidate.accomplishments.length > 0 ? (
+                            <ul className="space-y-0.5">
+                              {candidate.accomplishments.map((accomplishment, idx) => (
+                                <li key={idx} className="text-xs text-orange-600 flex items-start gap-1">
+                                  <span>•</span>
+                                  <span>{accomplishment}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-gray-400 text-xs">No accomplishments available</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 border border-gray-200 bg-white">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl bg-purple-50 p-1.5 rounded">🌟</span>
+                          <span className="font-semibold text-gray-900 text-xs">Key Endorsements</span>
+                        </div>
+                      </td>
+                      {comparisonCandidates.map(candidate => (
+                        <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
+                          {candidate.keyEndorsements && candidate.keyEndorsements.length > 0 ? (
+                            <ul className="space-y-0.5">
+                              {candidate.keyEndorsements.map((endorsement, idx) => (
+                                <li key={idx} className="text-xs text-purple-600 flex items-start gap-1">
+                                  <span>•</span>
+                                  <span>{endorsement}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-gray-400 text-xs">No endorsements available</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 border border-gray-200 bg-white">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl bg-blue-50 p-1.5 rounded">📊</span>
+                          <span className="font-semibold text-gray-900 text-xs">Voting Record</span>
+                        </div>
+                      </td>
+                      {comparisonCandidates.map(candidate => (
+                        <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
+                          {candidate.votingRecords && candidate.votingRecords.length > 0 ? (
+                            <ul className="space-y-0.5">
+                              {candidate.votingRecords.map((record, idx) => (
+                                <li key={idx} className="text-xs text-blue-600 flex items-start gap-1">
+                                  <span>•</span>
+                                  <span>{record}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-gray-400 text-xs">No voting record available</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 border border-gray-200 bg-white">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl bg-red-50 p-1.5 rounded">⚠️</span>
+                          <span className="font-semibold text-gray-900 text-xs">Controversies</span>
+                        </div>
+                      </td>
+                      {comparisonCandidates.map(candidate => (
+                        <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
+                          {candidate.controversies && candidate.controversies.length > 0 ? (
+                            <ul className="space-y-0.5">
+                              {candidate.controversies.map((controversy, idx) => (
+                                <li key={idx} className="text-xs text-red-600 flex items-start gap-1">
+                                  <span>•</span>
+                                  <span>{controversy}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-gray-400 text-xs">No known controversies</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 border border-gray-200 bg-white">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl bg-green-50 p-1.5 rounded">💰</span>
+                          <span className="font-semibold text-gray-900 text-xs">Campaign Finance</span>
+                        </div>
+                      </td>
+                      {comparisonCandidates.map(candidate => (
+                        <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
+                          <div className="space-y-1">
+                            <div>
+                              <p className="text-xs font-medium text-green-700">Funds Raised:</p>
+                              <p className="text-xs text-green-600">{candidate.campaignFinance?.fundsRaised || 'N/A'}</p>
+                            </div>
+                            {candidate.campaignFinance?.supportingPACs && candidate.campaignFinance.supportingPACs.length > 0 && (
+                              <div>
+                                <p className="text-xs font-medium text-green-700">Supporting PACs:</p>
+                                <ul className="text-xs text-green-600 space-y-0.5">
+                                  {candidate.campaignFinance.supportingPACs.map((pac, idx) => (
+                                    <li key={idx} className="flex items-start gap-1">
+                                      <span>•</span>
+                                      <span>{pac}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
                             )}
                           </div>
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Policy Issues Sections */}
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <thead>
+                    <tr>
+                      <th className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b">
+                        Issue
+                      </th>
+                      {comparisonCandidates.map(candidate => (
+                        <th key={candidate.id} className="px-3 py-2 text-left text-xs font-semibold bg-gray-50 text-gray-900 border-b border-l">
                           <div>
                             {candidate.name}
                             <span className="block text-xs font-normal text-gray-500">{candidate.party}</span>
                           </div>
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {issues.map((issue, index) => (
-                    <tr key={issue.id}>
-                      <td className="px-3 py-2 border border-gray-200 bg-white">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl bg-blue-50 p-1.5 rounded">{issue.icon}</span>
-                          <span className="font-semibold text-gray-900 text-xs">{issue.name}</span>
-                        </div>
-                      </td>
-                      {comparisonCandidates.map(candidate => {
-                        const position = candidate.positions[issue.id];
-                        
-                        return (
-                          <td 
-                            key={candidate.id} 
-                            className="px-4 py-3 text-sm text-gray-700 border border-gray-200 bg-white"
-                          >
-                            {position && position.supports && position.opposes ? (
-                              <div className="space-y-1">
-                                {position.supports.length > 0 && (
-                                  <div>
-                                    <div className="font-semibold text-sm mb-1 px-2 py-1 rounded inline-block" style={{ color: '#15803d', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0' }}>✓ Supports:</div>
-                                    <ul className="space-y-0.5">
-                                      {position.supports.map((item, idx) => (
-                                        <li key={idx} className="text-sm text-gray-600 flex items-start gap-1 leading-relaxed">
-                                          <span>•</span>
-                                          <span>{item}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {position.opposes.length > 0 && (
-                                  <div>
-                                    <div className="font-semibold text-sm mb-1 px-2 py-1 rounded inline-block" style={{ color: '#dc2626', backgroundColor: '#fef2f2', border: '1px solid #fecaca' }}>✗ Opposes:</div>
-                                    <ul className="space-y-0.5">
-                                      {position.opposes.map((item, idx) => (
-                                        <li key={idx} className="text-sm text-gray-600 flex items-start gap-1 leading-relaxed">
-                                          <span>•</span>
-                                          <span>{item}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {position.supports.length === 0 && position.opposes.length === 0 && (
-                                  <span className="text-gray-400 text-xs">No position available</span>
-                                )}
-                              </div>
-                            ) : (
-                              <span className="text-gray-400 text-xs">No position available</span>
-                            )}
-                          </td>
-                        );
-                      })}
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                  <tr>
-                    <td className="px-3 py-2 border border-gray-200 bg-white">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl bg-red-50 p-1.5 rounded">⚠️</span>
-                        <span className="font-semibold text-gray-900 text-xs">Controversies</span>
-                      </div>
-                    </td>
-                    {comparisonCandidates.map(candidate => (
-                      <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
-                        {candidate.controversies && candidate.controversies.length > 0 ? (
-                          <ul className="space-y-0.5">
-                            {candidate.controversies.map((controversy, idx) => (
-                              <li key={idx} className="text-xs text-red-600 flex items-start gap-1">
-                                <span>•</span>
-                                <span>{controversy}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <span className="text-gray-400 text-xs">No known controversies</span>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 border border-gray-200 bg-white">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl bg-blue-50 p-1.5 rounded">📊</span>
-                        <span className="font-semibold text-gray-900 text-xs">Voting Record</span>
-                      </div>
-                    </td>
-                    {comparisonCandidates.map(candidate => (
-                      <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
-                        {candidate.votingRecords && candidate.votingRecords.length > 0 ? (
-                          <ul className="space-y-0.5">
-                            {candidate.votingRecords.map((record, idx) => (
-                              <li key={idx} className="text-xs text-blue-600 flex items-start gap-1">
-                                <span>•</span>
-                                <span>{record}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <span className="text-gray-400 text-xs">No voting record available</span>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 border border-gray-200 bg-white">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl bg-green-50 p-1.5 rounded">💰</span>
-                        <span className="font-semibold text-gray-900 text-xs">Campaign Finance</span>
-                      </div>
-                    </td>
-                    {comparisonCandidates.map(candidate => (
-                      <td key={candidate.id} className="px-3 py-2 text-xs text-gray-700 border border-gray-200 bg-white">
-                        <div className="space-y-1">
-                          <div>
-                            <p className="text-xs font-medium text-green-700">Funds Raised:</p>
-                            <p className="text-xs text-green-600">{candidate.campaignFinance?.fundsRaised || 'N/A'}</p>
+                  </thead>
+                  <tbody>
+                    {issues.map((issue, index) => (
+                      <tr key={issue.id}>
+                        <td className="px-3 py-2 border border-gray-200 bg-white">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xl bg-blue-50 p-1.5 rounded">{issue.icon}</span>
+                            <span className="font-semibold text-gray-900 text-xs">{issue.name}</span>
                           </div>
-                          {candidate.campaignFinance?.supportingPACs && candidate.campaignFinance.supportingPACs.length > 0 && (
-                            <div>
-                              <p className="text-xs font-medium text-green-700">Supporting PACs:</p>
-                              <ul className="text-xs text-green-600 space-y-0.5">
-                                {candidate.campaignFinance.supportingPACs.map((pac, idx) => (
-                                  <li key={idx} className="flex items-start gap-1">
-                                    <span>•</span>
-                                    <span>{pac}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </div>
-                      </td>
+                        </td>
+                        {comparisonCandidates.map(candidate => {
+                          const position = candidate.positions[issue.id];
+                          
+                          return (
+                            <td 
+                              key={candidate.id} 
+                              className="px-4 py-3 text-sm text-gray-700 border border-gray-200 bg-white"
+                            >
+                              {position && position.supports && position.opposes ? (
+                                <div className="space-y-1">
+                                  {position.supports.length > 0 && (
+                                    <div>
+                                      <div className="font-semibold text-sm mb-1 px-2 py-1 rounded inline-block" style={{ color: '#15803d', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0' }}>✓ Supports:</div>
+                                      <ul className="space-y-0.5">
+                                        {position.supports.map((item, idx) => (
+                                          <li key={idx} className="text-sm text-gray-600 flex items-start gap-1 leading-relaxed">
+                                            <span>•</span>
+                                            <span>{item}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                  {position.opposes.length > 0 && (
+                                    <div>
+                                      <div className="font-semibold text-sm mb-1 px-2 py-1 rounded inline-block" style={{ color: '#dc2626', backgroundColor: '#fef2f2', border: '1px solid #fecaca' }}>✗ Opposes:</div>
+                                      <ul className="space-y-0.5">
+                                        {position.opposes.map((item, idx) => (
+                                          <li key={idx} className="text-sm text-gray-600 flex items-start gap-1 leading-relaxed">
+                                            <span>•</span>
+                                            <span>{item}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                  {position.supports.length === 0 && position.opposes.length === 0 && (
+                                    <span className="text-gray-400 text-xs">No position available</span>
+                                  )}
+                                </div>
+                              ) : (
+                                <span className="text-gray-400 text-xs">No position available</span>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
                     ))}
-                  </tr>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
             <div className="bg-white rounded-lg shadow-sm p-8 text-center">
@@ -509,6 +811,66 @@ function App() {
             </div>
           )}
         </main>
+        
+        {/* Privacy Footer */}
+        <footer className="bg-gray-100 border-t border-gray-200 mt-8">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center space-y-4">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">
+                  🔒 Privacy Notice
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+                  This website does not collect, store, or transmit any personal data. No tracking, analytics, or user information is gathered. 
+                  This tool is provided solely to assist individuals with their voting preferences through private, local calculations.
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto mt-2">
+                  All candidate information and policy positions are 100% sourced from publicly available information, including official websites, 
+                  public statements, campaign materials, and government records.
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-300 pt-4">
+                <p className="text-sm text-gray-600 font-medium mb-3">
+                  📚 Data Sources
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto text-xs">
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Official Campaign Websites</p>
+                    <p className="text-gray-500">Candidate campaign sites and official statements</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">California Government</p>
+                    <p className="text-gray-500">CA Secretary of State voter guide and official records</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Public Debates & Forums</p>
+                    <p className="text-gray-500">Transcribed debates and public appearances</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">News Coverage</p>
+                    <p className="text-gray-500">Major California news outlets and interviews</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Voting Records</p>
+                    <p className="text-gray-500">Public legislative voting history and positions</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Policy Documents</p>
+                    <p className="text-gray-500">Published policy papers and platform statements</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-400">
+                <span>• No Data Collection</span>
+                <span>• No User Tracking</span>
+                <span>• 100% Private</span>
+                <span>• Public Sources Only</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
@@ -577,6 +939,40 @@ function App() {
               >
                 Compare Top Candidates
               </button>
+              
+              {/* Debug button */}
+              <button
+                onClick={() => {
+                  console.log('Debug - Current state:', {
+                    uniqueId,
+                    quizResults: quizResults?.[0]?.name,
+                    quizAnswersCount: Object.keys(quizAnswers).length,
+                    pollDataTotal: pollData?.totalResponders,
+                    hasTakenQuiz: hasUserTakenQuiz()
+                  })
+                  savePollResponse()
+                }}
+                className="mt-2 w-full bg-gray-600 text-white py-2 rounded-md font-medium hover:bg-gray-700 transition-colors text-xs"
+              >
+                Debug: Force Save Response
+              </button>
+              
+              {/* Reset/Clear button */}
+              <button
+                onClick={resetPollResponse}
+                className="mt-2 w-full bg-orange-600 text-white py-2 rounded-md font-medium hover:bg-orange-700 transition-colors text-xs"
+              >
+                {hasUserTakenQuiz() ? 'Clear My Response & Start Fresh' : 'Reset My Identity'}
+              </button>
+              
+              {/* Status message */}
+              {hasUserTakenQuiz() && (
+                <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                  <p className="text-sm text-blue-800">
+                    ✅ You've already taken the quiz! You can retake it to update your responses, or clear your response to start completely fresh.
+                  </p>
+                </div>
+              )}
             </div>
           </main>
         </div>
@@ -651,6 +1047,66 @@ function App() {
             </button>
           </div>
         </main>
+        
+        {/* Privacy Footer */}
+        <footer className="bg-gray-100 border-t border-gray-200 mt-8">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center space-y-4">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">
+                  🔒 Privacy Notice
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+                  This website does not collect, store, or transmit any personal data. No tracking, analytics, or user information is gathered. 
+                  This tool is provided solely to assist individuals with their voting preferences through private, local calculations.
+                </p>
+                <p className="text-xs text-gray-500 max-w-3xl mx-auto mt-2">
+                  All candidate information and policy positions are 100% sourced from publicly available information, including official websites, 
+                  public statements, campaign materials, and government records.
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-300 pt-4">
+                <p className="text-sm text-gray-600 font-medium mb-3">
+                  📚 Data Sources
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto text-xs">
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Official Campaign Websites</p>
+                    <p className="text-gray-500">Candidate campaign sites and official statements</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">California Government</p>
+                    <p className="text-gray-500">CA Secretary of State voter guide and official records</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Public Debates & Forums</p>
+                    <p className="text-gray-500">Transcribed debates and public appearances</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">News Coverage</p>
+                    <p className="text-gray-500">Major California news outlets and interviews</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Voting Records</p>
+                    <p className="text-gray-500">Public legislative voting history and positions</p>
+                  </div>
+                  <div className="bg-white rounded-md p-3 border border-gray-200">
+                    <p className="font-semibold text-gray-700 mb-1">Policy Documents</p>
+                    <p className="text-gray-500">Published policy papers and platform statements</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-400">
+                <span>• No Data Collection</span>
+                <span>• No User Tracking</span>
+                <span>• 100% Private</span>
+                <span>• Public Sources Only</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
