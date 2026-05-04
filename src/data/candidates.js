@@ -83,7 +83,11 @@ export const candidates = [
     ],
     "controversies": [
       "Faced criticism for COVID-19 pandemic response as HHS Secretary",
-      "Challenged California's sanctuary city laws as Attorney General"
+      "Challenged California's sanctuary city laws as Attorney General",
+      "Court rebukes during time as AG related to public records and law enforcement disclosure",
+      "National investigations into migrant-child placements while HHS Secretary",
+      "Progressive backlash over oil industry donations and healthcare positions",
+      "Immigration enforcement record questioned by progressive activists"
     ],
     "votingRecords": [
       "Served as U.S. Representative (CA-31) 2013-2021, voted with Democratic Party 96% of the time",
@@ -191,7 +195,11 @@ export const candidates = [
     ],
     "controversies": [
       "Lost 2024 congressional primary to Dave Min",
-      "Criticized for campaign spending during re-election bid"
+      "Criticized for campaign spending during re-election bid",
+      "Worked for Ocwen (major mortgage servicer) after 2008 financial crisis",
+      "Stock trading activity monitored by financial watchdogs",
+      "Landlord controversy over university housing deal",
+      "Big bank ties despite reputation as 'bank bane'"
     ],
     "votingRecords": [
       "Served as U.S. Representative (CA-47) 2019-2025, voted with Democratic Party 98% of the time",
@@ -302,7 +310,11 @@ export const candidates = [
     ],
     "controversies": [
       "Spent over $100 million on 2020 presidential campaign without winning any delegates",
-      "Criticized for funding candidates who supported impeachment while not running himself"
+      "Criticized for funding candidates who supported impeachment while not running himself",
+      "Farallon Capital invested $89.1 million in Corrections Corp. of America (private prisons) while Steyer was co-founder",
+      "Former hedge fund investments in coal mining and fossil fuel projects contradict environmental advocacy",
+      "Protesters regularly confront him about private prisons housing undocumented immigrants at Otay Mesa detention center",
+      "Rivals attack: 'His entire campaign is built on the backs of kids in cages'"
     ],
     "votingRecords": [
       "Never held elected office - businessman and philanthropist",
@@ -646,7 +658,11 @@ export const candidates = [
     ],
     "controversies": [
       "Faced criticism over San Jose's handling of homeless encampments",
-      "Debates over development policies and housing density in San Jose"
+      "Debates over development policies and housing density in San Jose",
+      "Redirects homelessness funds from permanent housing to temporary shelters",
+      "Tech industry backing criticized by progressive Democrats",
+      "Public safety stance puts him at odds with Democratic base",
+      "Newsom critic on crime and homelessness policies"
     ],
     "votingRecords": [
       "Elected to San Jose City Council 2020, served until mayoral election",
@@ -761,7 +777,11 @@ export const candidates = [
     ],
     "controversies": [
       "Received $78,400 donations from two companies controlled by same siblings, which could violate California campaign finance law if aggregated",
-      "Called environmental activists 'terrorists' and disputed climate change's role in wildfires"
+      "Called environmental activists 'terrorists' and disputed climate change's role in wildfires",
+      "Joined lawsuit challenging California's sanctuary state laws with far-right America First Legal",
+      "Sued to overturn state laws protecting immigrants, wants cooperation with federal immigration authorities",
+      "$100M federal lawsuit over handling of arrest near Trump rally (defamation claims)",
+      "Immigration enforcement stance criticized by immigrant rights advocates"
     ],
     "votingRecords": [],
     "campaignFinance": {
@@ -861,7 +881,12 @@ export const candidates = [
     ],
     "controversies": [
       "Called an inexperienced talking head and dilettante by debate opponents",
-      "Criticized for close alignment with Trump administration on immigration policies"
+      "Criticized for close alignment with Trump administration on immigration policies",
+      "Trump loyalist endorsed by President Trump for governor",
+      "Claims 'everybody supports Trump's immigration policies'",
+      "Former Fox News host with controversial statements on immigration",
+      "Environmental flip-flop: once supported climate change action, now calls environmentalism 'terrorism'",
+      "Called California the 'worst-run state'"
     ],
     "votingRecords": [],
     "campaignFinance": {
