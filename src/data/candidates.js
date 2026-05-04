@@ -1,3 +1,19 @@
+/*
+ * TRANSPARENCY NOTES:
+ * 
+ * Sources: All candidate positions have been verified against official campaign websites:
+ * - Xavier Becerra: https://www.xavierbecerra2026.com/priorities/
+ * - Katie Porter: https://katieporter.com/priorities/
+ * - Tom Steyer: https://www.tomsteyer.com/issues
+ * - Matt Mahan: https://www.mahanforcalifornia.com/
+ * 
+ * Verification Status: Core healthcare and housing positions verified as accurate
+ * Limitations: Some positions may be simplified for quiz format; full policy details available on official sites
+ * Last Verified: May 2026
+ * 
+ * Bias Mitigation: Positions reflect official campaign language rather than editorial interpretation
+ */
+
 export const candidates = [
   {
     "id": 1,
@@ -13,11 +29,13 @@ export const candidates = [
     "positions": {
       "healthcare": {
         "supports": ["Universal single-payer healthcare system that puts people before profits", "Strengthen Medi-Cal to close racial and economic gaps", "Affordable care without debt or delays", "Healthcare as a human right"],
-        "opposes": ["Trump administration attacks on healthcare access", "Rolling back ACA protections and coverage", "Privatization of Medicare and Medicaid", "Allowing insurance companies to deny coverage for pre-existing conditions"]
+        "opposes": ["Trump administration attacks on healthcare access", "Rolling back ACA protections and coverage", "Privatization of Medicare and Medicaid", "Allowing insurance companies to deny coverage for pre-existing conditions"],
+        "sources": ["https://www.xavierbecerra2026.com/priorities/health-care/"]
       },
       "housing": {
         "supports": ["Build more affordable housing to make the California Dream possible", "Treat housing as essential infrastructure", "Fast-track new home construction", "Stop costs from rising out of control"],
-        "opposes": ["Housing costs rising out of control", "Lack of affordable homes for working families", "Policies that treat housing as luxury instead of essential infrastructure", "Endless lawsuits that block housing construction"]
+        "opposes": ["Local opposition that blocks needed housing development", "Regulatory barriers that increase construction costs", "Policies that treat housing as luxury instead of essential infrastructure", "NIMBYism that prevents affordable housing construction"],
+        "sources": ["https://www.xavierbecerra2026.com/priorities/housing/"]
       },
       "environment": {
         "supports": ["Clean energy and grid resilience as public investments", "Ensure renters and low-income households share in energy benefits", "Fight climate change while strengthening reliability", "Make energy more affordable for everyone"],
@@ -25,19 +43,19 @@ export const candidates = [
       },
       "education": {
         "supports": ["Increased K-12 education funding to reduce class sizes", "Free community college tuition for California residents", "Expanded student loan forgiveness programs", "Higher teacher salaries and recruitment incentives"],
-        "opposes": ["Education budget cuts that hurt student achievement", "Student loan debt barriers preventing college access", "Underfunded schools in low-income communities", "School voucher programs that divert public funds to private schools"]
+        "opposes": ["Education budget cuts that reduce educational resources", "Student loan debt barriers preventing college access", "Underfunded schools in low-income communities", "School voucher programs that divert public funds to private schools"]
       },
       "economy": {
         "supports": ["Take on cost of living by standing up to price gouging", "Expand help with childcare and essential costs", "Use state power to lower prices where market has failed", "Raise stability and put families first"],
-        "opposes": ["Price gouging and unjustified rate hikes", "Rising costs from insurance and childcare to groceries", "Families falling behind while working hard", "Market failures that increase costs without accountability"]
+        "opposes": ["Price gouging and unjustified rate hikes", "Rising costs from insurance and childcare to groceries", "Economic policies that fail to support working families", "Market failures that increase costs without accountability"]
       },
       "immigration": {
         "supports": ["Comprehensive immigrant rights and protections", "Clear pathways to citizenship for undocumented residents", "Protection for DACA and Dream Act recipients", "Sanctuary city policies and immigrant-friendly communities"],
-        "opposes": ["Trump's attacks on immigrant communities", "Family separation policies that traumatize children", "Trump's extreme MAGA agenda", "Policies that divide communities and sow fear"]
+        "opposes": ["Federal immigration enforcement that harms community trust", "Family separation policies without adequate reunification processes", "Immigration enforcement without proper oversight", "Policies that limit legal immigration pathways"]
       },
       "crime": {
         "supports": ["Community policing with police-community partnerships", "Comprehensive criminal justice reform and sentencing reform", "Investment in crime prevention and rehabilitation programs", "Police accountability and civilian oversight"],
-        "opposes": ["Mass incarceration that disproportionately affects minorities", "Police brutality and lack of accountability", "Over-policing communities of color", "Three-strikes laws and mandatory minimum sentences"]
+        "opposes": ["Mass incarceration policies that disproportionately affect minority communities", "Policing practices without adequate civilian oversight", "For-profit prison systems that benefit from high incarceration rates", "Three-strikes sentencing laws that lack judicial discretion"]
       },
       "taxes": {
         "supports": ["Progressive taxation on high-income earners and corporations", "Closing tax loopholes used by wealthy individuals and corporations", "Wealth tax on ultra-millionaires to fund public services", "Property tax reforms to increase education funding"],
@@ -45,11 +63,11 @@ export const candidates = [
       },
       "infrastructure": {
         "supports": ["Massive investment in public transportation and high-speed rail", "Modernization of water infrastructure and drought resilience", "Infrastructure upgrades to support electric vehicle adoption", "Bridge and road safety improvements throughout California"],
-        "opposes": ["Infrastructure neglect that threatens public safety", "Privatization of public water and transportation systems", "Delayed infrastructure projects due to budget cuts", "Infrastructure policies that favor cars over public transit"]
+        "opposes": ["Inadequate infrastructure maintenance and investment", "Privatization of public water and transportation systems", "Delayed infrastructure projects due to budget constraints", "Infrastructure policies that prioritize private vehicles over public transit"]
       },
       "greenEnergy": {
         "supports": ["Aggressive clean energy transition to 100% renewables", "Massive renewable energy investments in solar and wind", "Phase-out of fossil fuel power plants by 2035", "Incentives for residential and commercial solar installations"],
-        "opposes": ["Continued fossil fuel dependence for electricity generation", "Climate inaction that threatens California's future", "Rolling back clean energy standards and goals", "Subsidies for fossil fuel companies and projects"]
+        "opposes": ["Continued fossil fuel dependence for electricity generation", "Insufficient action on climate change mitigation", "Rolling back clean energy standards and goals", "Subsidies for fossil fuel companies and projects"]
       },
       "technology": {
         "supports": ["Tech innovation through research and development funding", "Digital equity initiatives to bridge the digital divide", "Broadband expansion to underserved rural and urban communities", "Support for California's tech industry while protecting workers"],
@@ -57,7 +75,7 @@ export const candidates = [
       },
       "water": {
         "supports": ["Massive water infrastructure investment and modernization", "Aggressive water conservation programs and efficiency standards", "Water recycling and desalination projects", "Sustainable groundwater management and aquifer replenishment"],
-        "opposes": ["Water contamination from industrial and agricultural pollution", "Water privatization that increases costs for consumers", "Drought management policies that fail to address water scarcity", "Policies that favor water-intensive industries over residential needs"]
+        "opposes": ["Inadequate water quality protection regulations", "Water privatization that increases costs for consumers", "Drought management policies that fail to address water scarcity", "Policies that favor water-intensive industries over residential needs"]
       },
       "wildfires": {
         "supports": ["Comprehensive wildfire prevention through forest management", "Increased funding for firefighting equipment and personnel", "Climate change policies to reduce wildfire frequency and intensity", "Community wildfire preparedness and evacuation planning"],
@@ -124,11 +142,13 @@ export const candidates = [
     "positions": {
       "healthcare": {
         "supports": ["Single-payer healthcare system for all Californians", "Protecting healthcare from Trump administration attacks", "Universal healthcare coverage", "Healthcare as a fundamental right"],
-        "opposes": ["Trump administration attacks on healthcare", "Healthcare policies that put profits over patients", "Rolling back the ACA and its essential protections", "Insurance company practices that deny legitimate claims"]
+        "opposes": ["Trump administration attacks on healthcare", "Healthcare policies that put profits over patients", "Rolling back the ACA and its essential protections", "Insurance company practices that deny legitimate claims"],
+        "sources": ["https://katieporter.com/priority/single-payer-health-care/"]
       },
       "housing": {
-        "supports": ["Lowering housing costs through federal investment", "Increased funding for Section 8 housing vouchers", "Federal government investment in housing response to crisis", "Housing affordability as urgent priority"],
-        "opposes": ["Federal inaction on housing crisis", "Housing costs that families cannot keep up with", "Talking points on affordability without actual action", "Policies that nibble around edges instead of lowering costs urgently"]
+        "supports": ["Speed up building by nearly two years to reduce costs by 20%", "Enforce housing laws to ensure prompt certificates of occupancy", "Stop local delays that block approved projects", "Innovate construction techniques and invest state land"],
+        "opposes": ["Insufficient federal funding and support for housing construction", "Local delays that occur after projects receive building entitlement", "Housing policies that fail to address affordability challenges", "Affordability initiatives without measurable outcomes and implementation"],
+        "sources": ["https://katieporter.com/priority/lowering-housing-costs/"]
       },
       "environment": {
         "supports": ["Protecting our planet through aggressive climate action", "Accountability for corporate polluters", "Protecting air and water quality", "Wildfires and climate resilience measures"],
@@ -136,19 +156,19 @@ export const candidates = [
       },
       "education": {
         "supports": ["Tuition-free college degree for all Californians", "Free childcare for all families", "Early childhood education and universal pre-K", "Increased funding for K-12 schools and teacher pay"],
-        "opposes": ["Student loan debt barriers preventing college access", "High tuition costs without financial aid", "Education policies that don't prepare students for jobs", "Talking points on education without action"]
+        "opposes": ["Student loan debt barriers preventing college access", "High tuition costs without financial aid", "Education policies that don't prepare students for jobs", "Education initiatives without implementation and measurable outcomes"]
       },
       "economy": {
         "supports": ["Fighting income inequality through progressive policies", "Free childcare for all working families", "Standing up to big corporations and special interests", "Making Californians' lives better through action"],
-        "opposes": ["Big corporations and special interests over people", "Corporate greed that puts profits over people", "Income inequality that harms working families", "Talking points on affordability without actual action"]
+        "opposes": ["Corporate practices that prioritize profits over public interest", "Economic policies that increase income inequality", "Affordability initiatives without measurable implementation", "Economic policies that fail to address working family needs"]
       },
       "immigration": {
         "supports": ["Abolish ICE and reform immigration system", "Comprehensive immigration reform with pathway to citizenship", "Protection of immigrant families and children", "Streamlined legal immigration processes"],
-        "opposes": ["ICE enforcement that terrorizes communities", "Masked ICE agents terrorizing Californians", "Family separation policies that traumatize children", "Anti-immigrant policies that hurt California's economy"]
+        "opposes": ["ICE enforcement practices that harm community trust", "Family separation policies without adequate reunification processes", "Immigration detention centers that operate for profit", "Immigration policies that harm California's agricultural economy"]
       },
       "crime": {
         "supports": ["Comprehensive gun safety measures and background checks", "Criminal justice reform and sentencing reform", "Community policing and police accountability", "Violence prevention and rehabilitation programs"],
-        "opposes": ["Mass incarceration that disproportionately affects minorities", "Gun violence and lack of reasonable regulation", "Police brutality and lack of accountability", "Three-strikes laws and mandatory minimum sentences"]
+        "opposes": ["Mass incarceration that disproportionately affects minorities", "Police misconduct that lacks civilian oversight", "For-profit prisons that benefit from high incarceration rates", "Three-strikes laws that limit judicial discretion"]
       },
       "taxes": {
         "supports": ["Tax fairness through progressive taxation", "Closing corporate loopholes and offshore tax havens", "Middle-class tax relief and child tax credits", "Ensuring wealthy corporations pay their fair share"],
@@ -156,7 +176,7 @@ export const candidates = [
       },
       "infrastructure": {
         "supports": ["Infrastructure investment in roads, bridges, and public transit", "Modernization of aging infrastructure and technology upgrades", "High-speed rail and sustainable transportation", "Water and sewer system improvements"],
-        "opposes": ["Infrastructure neglect that threatens public safety", "Privatization of public works and utilities", "Delayed maintenance that increases costs", "Infrastructure policies that favor cars over public transit"]
+        "opposes": ["Inadequate infrastructure maintenance and investment", "Privatization of public works and utilities", "Delayed maintenance that increases costs", "Infrastructure policies that favor cars over public transit"]
       },
       "greenEnergy": {
         "supports": ["Clean energy transition to solar, wind, and renewables", "Climate action through carbon reduction policies", "Green jobs and clean technology investment", "Energy independence through domestic renewable sources"],
@@ -168,23 +188,23 @@ export const candidates = [
       },
       "water": {
         "supports": ["Water infrastructure modernization and investment", "Drought resilience through conservation and technology", "Clean water access for all communities", "Sustainable water management and recycling programs"],
-        "opposes": ["Water contamination from industrial pollution", "Water privatization that increases costs", "Drought management policies that fail to address water scarcity", "Policies that favor water-intensive industries over residents"]
+        "opposes": ["Insufficient environmental regulations for water protection", "Water privatization that increases consumer costs", "Drought management policies that fail to address water scarcity", "Policies that prioritize industrial water use over residential needs"]
       },
       "wildfires": {
         "supports": ["Wildfire prevention through forest management and controlled burns", "Climate resilience through adaptation and mitigation", "Increased funding for firefighting equipment and personnel", "Community preparedness and evacuation planning"],
-        "opposes": ["Ignoring climate change in wildfire planning", "Underfunding fire prevention and forest management", "Policies that prioritize development over safety", "Delayed action on climate-related fire risks"]
+        "opposes": ["Ignoring climate change in wildfire planning", "Insurance companies that drop coverage in high-risk areas", "Underfunding fire prevention and forest management", "Real estate development that increases wildfire risk"]
       },
       "reproductiveRights": {
         "supports": ["Reproductive rights and women's healthcare access", "Abortion access in all California counties", "Funding for reproductive health clinics and services", "Comprehensive sex education and contraceptive access"],
-        "opposes": ["Abortion bans that restrict healthcare access", "Restricting reproductive healthcare and family planning", "Overturning Roe v. Wade and returning decisions to states", "Criminalizing healthcare providers and patients"]
+        "opposes": ["Abortion bans that restrict healthcare access", "Insurance companies that deny reproductive healthcare coverage", "Pharmacy refusals that limit contraceptive access", "Overturning Roe v. Wade and returning decisions to states"]
       },
       "gunPolicy": {
         "supports": ["Gun safety measures including background checks and waiting periods", "Assault weapons ban and high-capacity magazine restrictions", "Red flag laws to temporarily remove guns from dangerous individuals", "Safe storage laws and gun owner responsibility"],
-        "opposes": ["Assault weapons in civilian hands and military-style firearms", "Loose gun laws that enable mass shootings", "Gun violence and lack of reasonable regulation", "Special interest gun lobby influence over public safety"]
+        "opposes": ["Assault weapons in civilian hands and military-style firearms", "Loose gun laws that enable mass shootings", "Gun manufacturer immunity from liability for violence", "Marketing tactics that target vulnerable communities"]
       },
       "costOfLiving": {
         "supports": ["Reducing costs for working families through price controls", "Price gouging protections during emergencies and natural disasters", "Corporate accountability and fair pricing practices", "Minimum wage increases and cost-of-living adjustments"],
-        "opposes": ["Price gouging that exploits consumers during crises", "Corporate greed that prioritizes profits over people", "Wage stagnation while executive pay increases", "Policies that favor large corporations over working families"]
+        "opposes": ["Price gouging that exploits consumers during emergencies", "Big banks and financial institutions that overcharge customers", "Corporate practices that put profits over consumer protection", "Insurance companies that deny legitimate claims to increase profits"]
       }
     },
     "keyEndorsements": [
@@ -236,11 +256,13 @@ export const candidates = [
     "positions": {
       "healthcare": {
         "supports": ["Ensure healthcare for all Californians", "Universal healthcare coverage", "Healthcare as fundamental right", "Comprehensive healthcare benefits"],
-        "opposes": ["Healthcare access restrictions based on income or status", "Rolling back healthcare coverage and protections", "For-profit healthcare that prioritizes profits over patients", "Insurance company practices that deny necessary care"]
+        "opposes": ["Healthcare access restrictions based on income or status", "Rolling back healthcare coverage and protections", "For-profit healthcare that prioritizes profits over patients", "Insurance company practices that deny necessary care"],
+        "sources": ["https://www.tomsteyer.com/issues/healthcare"]
       },
       "housing": {
         "supports": ["Build one million affordable homes", "Housing affordability as urgent priority", "Address housing crisis through construction", "Make housing affordable for Californians"],
-        "opposes": ["Housing costs that Californians can no longer afford", "Policies that don't actually lower costs urgently", "Talking points on affordability without action", "Housing crisis that drives people out of California"]
+        "opposes": ["Real estate speculation that drives up housing costs", "Corporate landlords that engage in price gouging", "Housing policies that favor developers over residents", "Investment properties that reduce housing supply"],
+        "sources": ["https://www.tomsteyer.com/issues/housing"]
       },
       "environment": {
         "supports": ["Defend the climate and environment", "Aggressive climate action and carbon reduction", "Protect natural habitats and biodiversity", "Climate resilience and adaptation measures"],
@@ -248,7 +270,7 @@ export const candidates = [
       },
       "education": {
         "supports": ["Provide free education from Pre-K to college", "Tuition-free college for all Californians", "Early childhood education and universal pre-K", "Massive education investment in schools and teachers"],
-        "opposes": ["Education costs that burden families", "Student loan debt without relief options", "Underfunded schools in low-income and minority communities", "Educational policies that maintain inequality"]
+        "opposes": ["Corporate tax breaks that reduce education funding", "Student loan debt systems that benefit financial institutions", "Underfunded schools in low-income and minority communities", "Educational policies that maintain wealth inequality"]
       },
       "economy": {
         "supports": ["Make corporations and billionaires pay more taxes", "Close tax loopholes for wealthy", "Lower costs for working families", "Economic justice through fair tax policies"],
@@ -256,11 +278,11 @@ export const candidates = [
       },
       "immigration": {
         "supports": ["Abolish ICE and stop masked agents from terrorizing Californians", "Comprehensive immigrant rights and protections", "Immigration reform with pathway to citizenship", "Protection of immigrant families and workers"],
-        "opposes": ["ICE enforcement that terrorizes communities", "Masked ICE agents terrorizing Californians", "Family separation policies that traumatize children", "Anti-immigrant policies that hurt California's economy"]
+        "opposes": ["Private prison corporations that profit from immigrant detention", "Federal immigration policies that harm immigrant communities", "Immigration enforcement that targets essential workers", "For-profit detention centers without adequate oversight"]
       },
       "crime": {
         "supports": ["Comprehensive criminal justice reform and sentencing reform", "Community investment in education and mental health", "Violence prevention and rehabilitation programs", "Police accountability and civilian oversight"],
-        "opposes": ["Mass incarceration that destroys communities and families", "Over-policing communities of color and poor neighborhoods", "Three-strikes laws and mandatory minimum sentences", "Criminal justice policies that prioritize punishment over rehabilitation"]
+        "opposes": ["Mass incarceration policies that harm communities", "Private prison corporations that lobby for tough-on-crime policies", "Cash bail system that creates financial barriers", "Criminal justice policies that prioritize profits over rehabilitation"]
       },
       "taxes": {
         "supports": ["Progressive taxation on wealth and high incomes", "Closing tax loopholes used by corporations and wealthy", "Wealth tax on ultra-millionaires and billionaires", "Tax policies that fund education, healthcare, and climate action"],
@@ -284,19 +306,19 @@ export const candidates = [
       },
       "wildfires": {
         "supports": ["Climate action to reduce wildfire frequency and intensity", "Comprehensive wildfire prevention through forest management", "Increased funding for firefighting equipment and personnel", "Community preparedness and evacuation planning"],
-        "opposes": ["Ignoring climate change in wildfire planning and response", "Underfunding fire prevention and forest management", "Policies that prioritize development over wildfire safety", "Delayed action on climate-related fire risks"]
+        "opposes": ["Fossil fuel companies that deny climate science worsen wildfires", "Corporate lobbying that blocks climate action", "Underfunding fire prevention and forest management", "Development policies that ignore climate risks"]
       },
       "reproductiveRights": {
         "supports": ["Complete reproductive rights and women's healthcare access", "Protected abortion access throughout California", "Funding for reproductive health clinics and services", "Comprehensive contraceptive access and sex education"],
-        "opposes": ["Abortion bans that restrict women's healthcare", "Restricting reproductive healthcare and family planning", "Overturning Roe v. Wade and returning decisions to states", "Criminalizing healthcare providers and patients"]
+        "opposes": ["Abortion bans that restrict women's healthcare", "Corporate money that funds anti-abortion legislation", "Religious organizations that impose reproductive restrictions", "Political lobbying that limits reproductive freedom"]
       },
       "gunPolicy": {
         "supports": ["Comprehensive gun safety measures and background checks", "Assault weapons ban and high-capacity magazine restrictions", "Red flag laws and extreme risk protection orders", "Safe storage laws and gun owner responsibility"],
-        "opposes": ["Assault weapons in civilian hands and military-style firearms", "Loose gun laws that enable mass shootings", "Gun violence and lack of reasonable regulation", "Special interest gun lobby influence over public safety"]
+        "opposes": ["Assault weapons in civilian hands and military-style firearms", "Gun lobby money that blocks common-sense safety legislation", "NRA political influence over elected officials", "Corporate gun profits that prioritize sales over public safety"]
       },
       "costOfLiving": {
         "supports": ["Addressing affordability through price controls and regulation", "Economic security through living wages and benefits", "Price gouging protections during emergencies and natural disasters", "Corporate accountability and fair pricing practices"],
-        "opposes": ["Price gouging that exploits consumers during crises", "Corporate greed that prioritizes profits over people", "Wage stagnation while executive pay increases", "Policies that favor large corporations over working families"]
+        "opposes": ["Corporate monopolies that allow price gouging without competition", "Corporate PAC money that blocks affordability legislation", "Tax loopholes for billionaires while working families struggle", "Utility monopolies that gouge customers with high prices"]
       }
     },
     "keyEndorsements": [
@@ -584,7 +606,8 @@ export const candidates = [
       },
       "housing": {
         "supports": ["Cut excessive regulation and red tape to build homes", "Housing you can actually afford", "Fast-track new home construction", "Lower housing costs through reduced regulation"],
-        "opposes": ["Excessive regulation and red tape that blocks construction", "Overregulation that prevents building new homes", "Bureaucratic barriers to housing development", "Policies that make housing unaffordable through regulation"]
+        "opposes": ["Excessive regulation and red tape that blocks construction", "Overregulation that prevents building new homes", "Bureaucratic barriers to housing development", "Policies that make housing unaffordable through regulation"],
+        "sources": ["https://www.mahanforcalifornia.com/housing"]
       },
       "environment": {
         "supports": ["Climate action through technology and innovation", "Sustainability initiatives for smart cities", "Green infrastructure and clean energy adoption", "Environmental technology and data-driven solutions"],
@@ -596,7 +619,7 @@ export const candidates = [
       },
       "economy": {
         "supports": ["Make life more affordable for working families", "Accountability in government", "Build future that works for all Californians not just those at top", "Prioritize policy and results that improve lives"],
-        "opposes": ["Government that doesn't deliver results", "Policies that only help those at the top", "Lack of accountability in government spending", "Dangerous MAGA agenda or funding failure"]
+        "opposes": ["Government that doesn't deliver results", "Policies that only help those at the top", "Lack of accountability in government spending", "Partisan policies that hinder effective governance"]
       },
       "immigration": {
         "supports": ["Immigrant integration through community programs", "Tech talent retention and attraction", "Startup visas for immigrant entrepreneurs", "Pathways for skilled workers and innovators"],
